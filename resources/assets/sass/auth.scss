@@ -1,0 +1,113 @@
+@import 'fonts';
+@import 'variables';
+
+@media screen
+{
+    .base {
+        margin: 0;
+        padding: 0;
+    }
+    .autenticacao {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $cor1;
+        .formulario {
+            border-radius: 3px;
+            border-top: 5px solid $cor7;
+            background-color: white;
+            padding: 20px;
+            &.erro {
+                border-top-color: $cor5;
+            }
+        }
+        .cabecalho {
+            text-align: center;
+            font-family: $fonte1;
+            .destaque {
+                font-size: 1.4em;
+                font-weight: 700;
+            }
+            .descricao {
+                font-size: 1.3em;
+                font-weight: 100;
+            }
+            &:before {
+                content: '';
+                width: 200px;
+                height: 150px;
+                background-image: url(../imagens/login.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-top: -100px;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+        }
+        .campos {
+            .campo {
+                display: flex;
+                border-radius: 3px;
+                border: 1px solid rgba(0,0,0,.2);
+                box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+                position: relative;
+                margin: 20px 0;
+                &.erro {
+                    border-color: $cor5;
+                }
+            }
+            .icone {
+                padding: 10px;
+                background-color: rgba(0,0,0,.1);
+            }
+            .texto {
+                font-family: $fonte1;
+                border: none;
+                padding: 0 15px;
+            }
+            .mensagem {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                margin-top: -5px;
+                margin-right: 5px;
+                font-family: $fonte1;
+                font-size: .7em;
+                text-transform: uppercase;
+                &.erro {
+                    background-color: $cor5;
+                    border-radius: 3px;
+                    color: white;
+                    padding: 3px 10px;
+                }
+            }
+        }
+        .mensagens {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            text-transform: uppercase;
+            font-family: $fonte1;
+            font-size: .8em;
+            border-radius: 3px;
+            &.erro {
+                color: white;
+                background-color: $cor5;
+            }
+        }
+        .rodape {
+            .botao {
+                width: 100%;
+                padding: 10px;
+                background-color: $cor3;
+                border: none;
+                text-transform: uppercase;
+                color: white;
+                border-radius: 3px;
+                font-size: 1em;
+            }
+        }
+    }
+}
