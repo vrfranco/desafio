@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Jobs\Download;
 use App\Url;
@@ -35,5 +34,10 @@ class UrlsController extends Controller
             'address' => $request->address,
             'status' => 'processando',
         ]);;
+    }
+
+    public function show(Url $url)
+    {
+        return $url;
     }
 }

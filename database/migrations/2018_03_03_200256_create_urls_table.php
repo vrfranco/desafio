@@ -19,6 +19,7 @@ class CreateUrlsTable extends Migration
             $table->string('code')->nullable();
             $table->string('filename')->nullable();
             $table->string('filetype')->nullable();
+            $table->string('filesize')->nullable();
             $table->string('message')->nullable();
             $table->string('status');
             $table->timestamps();

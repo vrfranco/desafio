@@ -24,6 +24,7 @@
     "dependencies": {
         "laravel-echo": "^1.3.5",
         "moment": "^2.21.0",
+        "prismjs": "^1.11.0",
         "pusher-js": "^4.2.2",
         "validate.js": "^0.12.0",
         "vue-router": "^3.0.1",

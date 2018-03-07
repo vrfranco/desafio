@@ -1,6 +1,7 @@
 @import 'fonts';
 @import 'variables';
 
+
 @media screen
 {
     .base {
@@ -16,19 +17,34 @@
         flex-direction: column;
         .pagina {
             width: 80%;
-            //border: 1px solid rgba(255,255,255,.1);
             background-color: white;
             border-radius: 3px;
             margin-top: 100px;
             margin-bottom: 100px;
             box-shadow: 2px 2px 1px rgba(0,0,0,.5);
+            .fade-enter-active, .fade-leave-active {
+                transition-property: opacity;
+                transition-duration: .25s;
+            }
+
+            .fade-enter-active {
+                transition-delay: .25s;
+            }
+
+            .fade-enter, .fade-leave-active {
+                opacity: 0
+            }
         }
         .cabecalho {
             height: 60px;
+            display: flex;
+            align-items: center;
         }
         .formulario {
             position: relative;
             height: 100%;
+            width: 100%;
+            margin-right: -1px;
             display: flex;
             align-content: stretch;
             flex-direction: column;
@@ -101,7 +117,9 @@
                 display: flex;
                 font-size: 1.2em;
                 justify-content: space-between;
+                text-decoration: none;
                 font-family: $fonte1;
+                color: black;
             }
             .item:nth-child(odd) {
                 background-color: rgba(100,100,100,.1);
@@ -174,9 +192,13 @@
             }
         }
         .informacao {
+            width: 100%;
             display: flex;
             justify-content: space-between;
+            border: 1px solid transparent;
+            border-left-width: 4px;
             align-items: stretch;
+            position: relative;
             height: 100%;
             .descricao {
                 display: flex;
@@ -193,6 +215,27 @@
                 align-items: center;
                 align-content: center;
                 justify-content: center;
+                text-decoration: none;
+                color: $cor1;
+            }
+            .carregando {
+                display: flex;
+                align-items: center;
+                position: absolute;
+                text-transform: uppercase;
+                right: 0;
+                margin-right: 10px;
+            }
+            .carregando .icone {
+                right: 0;
+                border-color: rgba(0,0,0,.3);
+                color: rgba(0,0,0,.3);
+                background-image: url(../imagens/loading.gif);
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 61px;
+                height: 61px;
+                display: inline-block;
             }
             .situacao {
                 display: flex;
@@ -219,8 +262,36 @@
                 text-transform: uppercase;
                 text-align: center;
             }
+            .conteudo {
+                padding: 0 10px;
+                code.codigo {
+                    display: block;
+                }
+                code.codigo.language-html {
+                    margin: 0;
+                    padding: 0 ;
+                }
+                div.imagem {
+                    height: 500px;
+                    width: 102.1%;
+                    margin: 0 -10px;
+                    //background-image: url(../imagens/loading.gif);
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                }
+            }
             &.recebido {
                 border-top-color: $cor6;
+            }
+            &.processando {
+                border-top-color: $cor1;
+            }
+            &.erro {
+                border-top-color: $cor5;
+            }
+            &.problema {
+                border-top-color: $cor8;
             }
         }
     }

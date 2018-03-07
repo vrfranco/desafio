@@ -20,16 +20,14 @@
 
         <div class="corpo">
             <div class="lista">
-
-                <div class="item" v-for="(item, key) in list" :key="key">
+                <router-link class="item" v-for="(item, key) in list" :key="key" :to="{ name: 'view', params: { id: item.id } }">
                     <div class="descricao">
                         <div class="codigo" :class="item.status">{{item.code}}</div>
                         <div class="endereco">{{item.address}}</div>
                         <div class="mensagem" v-if="item.message">{{item.message}}</div>
                     </div>
                     <div class="situacao">{{item.status}}</div>
-                </div>
-
+                </router-link>
             </div>
         </div>
     </div>
@@ -79,7 +77,6 @@
                 };
 
                 const config = {
-                    //format: "detailed"
                     fullMessages: false,
                 };
                 

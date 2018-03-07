@@ -10,6 +10,7 @@ class Url extends Model
         'address',
         'filename',
         'filetype',
+        'filesize',
         'message',
         'status',
         'code',

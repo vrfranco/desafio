@@ -74,13 +74,39 @@
             box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   }
 
+  .aplicativo .pagina .fade-enter-active,
+  .aplicativo .pagina .fade-leave-active {
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-duration: .25s;
+            transition-duration: .25s;
+  }
+
+  .aplicativo .pagina .fade-enter-active {
+    -webkit-transition-delay: .25s;
+            transition-delay: .25s;
+  }
+
+  .aplicativo .pagina .fade-enter,
+  .aplicativo .pagina .fade-leave-active {
+    opacity: 0;
+  }
+
   .aplicativo .cabecalho {
     height: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 
   .aplicativo .formulario {
     position: relative;
     height: 100%;
+    width: 100%;
+    margin-right: -1px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -176,7 +202,9 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    text-decoration: none;
     font-family: "Roboto", sans-serif;
+    color: black;
   }
 
   .aplicativo .lista .item:nth-child(odd) {
@@ -274,15 +302,19 @@
   }
 
   .aplicativo .informacao {
+    width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    border: 1px solid transparent;
+    border-left-width: 4px;
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
             align-items: stretch;
+    position: relative;
     height: 100%;
   }
 
@@ -313,6 +345,33 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    text-decoration: none;
+    color: #333333;
+  }
+
+  .aplicativo .informacao .carregando {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    text-transform: uppercase;
+    right: 0;
+    margin-right: 10px;
+  }
+
+  .aplicativo .informacao .carregando .icone {
+    right: 0;
+    border-color: rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.3);
+    background-image: url(/images/loading.gif?87594cb75bc7639901cb6cbcdc745f43);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 61px;
+    height: 61px;
+    display: inline-block;
   }
 
   .aplicativo .informacao .situacao {
@@ -352,8 +411,42 @@
     text-align: center;
   }
 
+  .aplicativo .resultado .conteudo {
+    padding: 0 10px;
+  }
+
+  .aplicativo .resultado .conteudo code.codigo {
+    display: block;
+  }
+
+  .aplicativo .resultado .conteudo code.codigo.language-html {
+    margin: 0;
+    padding: 0;
+  }
+
+  .aplicativo .resultado .conteudo div.imagem {
+    height: 500px;
+    width: 102.1%;
+    margin: 0 -10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
   .aplicativo .resultado.recebido {
     border-top-color: #037903;
+  }
+
+  .aplicativo .resultado.processando {
+    border-top-color: #333333;
+  }
+
+  .aplicativo .resultado.erro {
+    border-top-color: #FF0000;
+  }
+
+  .aplicativo .resultado.problema {
+    border-top-color: #E24C4B;
   }
 }
 

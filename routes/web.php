@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,18 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/', function()
     {
         return view('app');
+    });
+    Route::get('/{filename}', function($filename)
+    {
+        //$disk = Storage::disk('local');
+
+        $path = storage_path("app/public/$filename");
+
+        //return $disk->get( $path );
+
+        //return response()->download( 'public', $filename );
+
+        return response()->file( $path );
     });
 });
 

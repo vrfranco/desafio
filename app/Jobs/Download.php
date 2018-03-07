@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Events\Done;
 use App\Jobs\Save;
 use App\Url;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
 
 class Download implements ShouldQueue
 {
@@ -36,13 +41,15 @@ class Download implements ShouldQueue
     public function handle()
     {
         try {
+            
+            $client = new Client();
+            
+            $request = new Request('GET', $this->url->address);
 
-            $client = new \GuzzleHttp\Client();
+            $disk = Storage::disk('local');
 
-            $request = new \GuzzleHttp\Psr7\Request('GET', $this->url->address);
+            $promise = $client->sendAsync($request)->then(function($response) use ($disk) {
 
-            $promise = $client->sendAsync($request)->then(function($response) {
-               
                 $this->url->fill([
 
                     'status' => 'recebido',
@@ -53,13 +60,19 @@ class Download implements ShouldQueue
 
                     'filetype' => $response->getHeader('Content-Type')[0],
 
+                    'filesize' => $response->getBody()->getSize(),
+
                     'filename' => uniqid(),
 
                 ]);
 
                 if( $this->url->save() )
                 {
-                    if( Storage::disk('local')->put( 'public/' . $this->url->filename, (string) $response->getBody() ))
+                    $filename = "public/{$this->url->filename}";
+
+                    $content = $response->getBody()->getContents();
+
+                    if( $disk->put( $filename, $content ))
                     {
                         event(new Done( $this->url ));
                     }
@@ -76,7 +89,7 @@ class Download implements ShouldQueue
             $promise->wait();
 
             
-        } catch (\GuzzleHttp\Exception\BadResponseException $exception) {
+        } catch (BadResponseException $exception) {
 
             $this->url->update([
 
@@ -90,7 +103,7 @@ class Download implements ShouldQueue
 
             event(new Done( $this->url ));
 
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
+        } catch (ClientException $e) {
 
             $this->url->update([
 
@@ -104,7 +117,7 @@ class Download implements ShouldQueue
 
             event(new Done( $this->url ));
 
-        } catch (\GuzzleHttp\Exception\ConnectException $e) {
+        } catch (ConnectException $e) {
             
             $this->url->update([
 
