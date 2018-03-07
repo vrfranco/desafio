@@ -46,6 +46,7 @@
   .base {
     margin: 0;
     padding: 0;
+    background-color: #333333;
   }
 
   .aplicativo {
@@ -61,7 +62,6 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    background-color: #333333;
   }
 
   .aplicativo .pagina {
@@ -69,6 +69,7 @@
     background-color: white;
     border-radius: 3px;
     margin-top: 100px;
+    margin-bottom: 100px;
     -webkit-box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
             box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   }
@@ -90,6 +91,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     border: 1px solid transparent;
+    border-left-width: 5px;
   }
 
   .aplicativo .formulario .link {
@@ -116,7 +118,7 @@
   .aplicativo .formulario .mensagem {
     position: absolute;
     top: 100%;
-    left: 57px;
+    left: 54px;
     font-weight: bolder;
     padding: 5px;
     background-color: #FF0000;
@@ -153,7 +155,12 @@
 
   .aplicativo .formulario.erro {
     border: 1px solid #FF0000;
+    border-left-width: 5px;
     border-radius: 3px;
+  }
+
+  .aplicativo .formulario.erro .link {
+    color: #FF0000;
   }
 
   .aplicativo .formulario.erro .texto {
@@ -209,6 +216,7 @@
     padding: 2px 4px;
     border-radius: 2px;
     font-size: .6em;
+    text-transform: uppercase;
   }
 
   .aplicativo .lista .codigo {
@@ -243,6 +251,15 @@
   .aplicativo .lista .codigo.erro {
     border-color: #FF0000;
     color: #FF0000;
+  }
+
+  .aplicativo .lista .codigo.problema {
+    border-color: #E24C4B;
+    color: #E24C4B;
+    background-image: url(/images/cancel.svg?757fb1173b88da3d8fcafaca9caac8c0);
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .aplicativo .lista .situacao {

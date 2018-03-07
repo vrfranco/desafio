@@ -1,14 +1,288 @@
+@import 'fonts';
+@import 'variables';
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
-@import "variables";
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+@media screen
+{
+    .base {
+        margin: 0;
+        padding: 0;
+        background-color: $cor1;
+    }
+    .aplicativo {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .pagina {
+            width: 80%;
+            //border: 1px solid rgba(255,255,255,.1);
+            background-color: white;
+            border-radius: 3px;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            box-shadow: 2px 2px 1px rgba(0,0,0,.5);
+        }
+        .cabecalho {
+            height: 60px;
+        }
+        .formulario {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-content: stretch;
+            flex-direction: column;
+            border: 1px solid transparent;
+            border-left-width: 5px;
+            .link {
+                position: absolute;
+                margin: 20px;
+                font-size: 1.3em;
+            }
+            .texto {
+                border: none;
+                height: 100%;
+                padding: 10px 160px 10px 60px;
+                font-family: $fonte1;
+                font-size: 1.2em;
+                font-weight: 300;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+            .texto:focus {
+                outline: none;
+            }
+            .mensagem {
+                position: absolute;
+                top: 100%;
+                left: 54px;
+                font-weight: bolder;
+                padding: 5px;
+                background-color: $cor5;
+                color: white;
+                border-radius: 3px;
+                font-size: .7em;
+                font-family: $fonte1;
+                margin-top: -10px;
+            }
+            .botao {
+                display: flex;
+                font-family: $fonte1;
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background-color: $cor2;
+                color: white;
+                font-weight: 700;
+                align-items: center;
+                padding: 0 25px;
+                border-top-right-radius: 3px;
+                font-size: 1.4em;
+                .baixar {
+                    margin-left: 20px;
+                }
+            }
+            &.erro {
+                border: 1px solid $cor5;
+                border-left-width: 5px;
+                border-radius: 3px;
+                .link {
+                    color: $cor5;
+                }
+                .texto {
+                    color: $cor5;
+                }
+            }
+        }
+        .lista {
+            .item {
+                height: 60px;
+                display: flex;
+                font-size: 1.2em;
+                justify-content: space-between;
+                font-family: $fonte1;
+            }
+            .item:nth-child(odd) {
+                background-color: rgba(100,100,100,.1);
+            }
+            .item:nth-child(even) {
+                background-color: rgba(175,175,175,.1);
+            }
+            .item:hover {
+                background-color: rgba(0,0,0,.1);
+            }
+            .item:last-child {
+                .codigo {
+                    border-bottom-left-radius: 3px;
+                }
+            }
+            .descricao {
+                display: flex;
+                height: 100%;
+                align-items: center;
+            }
+            .endereco {
+                font-weight: 100;
+            }
+            .mensagem {
+                border: 1px solid rgba(0,0,0,.3);
+                color: rgba(0,0,0,.6);
+                margin: 0 10px;
+                padding: 2px 4px;
+                border-radius: 2px;
+                font-size: .6em;
+                text-transform: uppercase;
+            }
+            .codigo {
+                border-left: 5px solid;
+                width: 56px;
+                height: 100%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &.recebido {
+                    border-color: $cor6;
+                    color: $cor6;
+                }
+                &.processando {
+                    border-color: rgba(0,0,0,.3);
+                    color: rgba(0,0,0,.3);
+                    background-image: url(../imagens/loading.gif);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                &.erro {
+                    border-color: $cor5;
+                    color: $cor5;
+                }
+                &.problema {
+                    border-color: $cor8;
+                    color: $cor8;
+                    background-image: url(../imagens/cancel.svg);
+                    background-size: 25px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+            .situacao {
+                padding: 0 20px;
+                display: flex;
+                font-weight: 100;
+                align-items: center;
+            }
+        }
+        .informacao {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 100%;
+            .descricao {
+                display: flex;
+                align-items: center;
+                font-weight: 300;
+                font-size: 1.2em;
+                font-family: $fonte1;
+            }
+            .voltar {
+                width: 61px;
+                height: 100%;
+                font-size: 1.2em;
+                display: flex;
+                align-items: center;
+                align-content: center;
+                justify-content: center;
+            }
+            .situacao {
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                font-weight: 300;
+                font-size: 1.2em;
+                font-family: $fonte1;
+            }
+        }
+        .resultado {
+            border-top: 5px solid;
+            .detalhes {
+                display: flex;
+                justify-content: space-between;
+                background-color: $cor1;
+                color: white;
+            }
+            .item {
+                padding: 10px;
+                font-family: $fonte1;
+                font-weight: 100;
+                font-size: .8em;
+                text-transform: uppercase;
+                text-align: center;
+            }
+            &.recebido {
+                border-top-color: $cor6;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1024px)
+{
+    .aplicativo {
+        .pagina {
+            width: 99%;
+            margin-top: 0;
+            //margin-left: -20px;
+            border-radius: none;
+        }
+        .cabecalho {
+            .botao {
+                span {
+                    display: none;
+                }
+                .baixar {
+                    margin-left: 0;
+                }
+            }
+        }
+        .formulario {
+            .texto {
+                padding-right: 100px;
+            }    
+        }
+        .lista {
+            .item {
+                position: relative;
+                height: 100px;
+            }
+            .mensagem {
+                position: absolute;
+                left: 55px;
+                margin: 0 0 0 5px;
+                top: 15px;
+            }
+            .descricao {
+                width: 100%;
+            }
+            .endereco {            
+                overflow: hidden;
+                text-overflow: ellipsis; 
+                width: 65%;
+            }
+            .situacao {
+                position: absolute;
+                right: 0;
+                left: 55px;
+                top: 100%;
+                margin-top: -40px;
+                font-size: .8em;
+                padding: 5px;
+                border-radius: 3px;
+            }
+        }
+        .informacao {
+            .situacao {
+                display: none;
+            }
+        }
+    }
 }

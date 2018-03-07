@@ -14,4 +14,4 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .sass('resources/assets/sass/auth.scss', 'public/css')
-   .browserSync('localhost:8000');
+   .browserSync('192.168.30.11');
