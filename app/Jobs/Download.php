@@ -59,7 +59,7 @@ class Download implements ShouldQueue
 
                 if( $this->url->save() )
                 {
-                    if( Storage::disk('local')->put( $this->url->filename, (string) $response->getBody() ))
+                    if( Storage::disk('local')->put( 'public/' . $this->url->filename, (string) $response->getBody() ))
                     {
                         event(new Done( $this->url ));
                     }
