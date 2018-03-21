@@ -46,7 +46,7 @@ class Download implements ShouldQueue
             
             $request = new Request('GET', $this->url->address);
 
-            $disk = Storage::disk('local');
+            $disk = Storage::disk('s3');
 
             $promise = $client->sendAsync($request)->then(function($response) use ($disk) {
 
@@ -68,7 +68,7 @@ class Download implements ShouldQueue
 
                 if( $this->url->save() )
                 {
-                    $filename = "public/{$this->url->filename}";
+                    $filename = $this->url->filename;
 
                     $content = $response->getBody()->getContents();
 

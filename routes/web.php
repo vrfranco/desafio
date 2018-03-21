@@ -25,15 +25,9 @@ Route::group(['middleware' => 'auth'], function()
     });
     Route::get('/{filename}', function($filename)
     {
-        //$disk = Storage::disk('local');
+        $disk = Storage::disk('s3');
 
-        $path = storage_path("app/public/$filename");
-
-        //return $disk->get( $path );
-
-        //return response()->download( 'public', $filename );
-
-        return response()->file( $path );
+        return $disk->get( $filename );
     });
 });
 
