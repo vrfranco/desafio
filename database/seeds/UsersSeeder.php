@@ -12,10 +12,13 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Usuario',
-            'email' => 'usuario@meudominio.com.br',
-            'password' => bcrypt(123),
-        ]);
+        if( ! User::where('email', 'usuario@meudominio.com.br')->first() )
+        {
+            User::create([
+                'name' => 'Usuario',
+                'email' => 'usuario@meudominio.com.br',
+                'password' => bcrypt(123),
+            ]);
+        }
     }
 }
